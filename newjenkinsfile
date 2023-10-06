@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Compile') {
+            steps {
+                echo 'Compile World'
+                git 'https://github.com/Kyrhan/DevOpsClassCodes-aug.git'
+                sh 'mvn compile'
+            }
+        }
+           stage('test') {
+            steps {
+                echo 'test World'
+                sh 'mvn test'
+            }
+        }
+           stage('package') {
+            steps {
+                echo 'Test Package stage'
+                 sh 'mvn package'
+            }
+        }
+    }
+}
